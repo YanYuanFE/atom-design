@@ -1,0 +1,50 @@
+{
+  "name": "atom-design",
+  "version": "1.0.0",
+  "description": "React UI",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run storybook",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YanYuanFE/atom-design.git"
+  },
+  "keywords": [
+    "React"
+  ],
+  "author": "YanYuanFE",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YanYuanFE/atom-design/issues"
+  },
+  "homepage": "https://github.com/YanYuanFE/atom-design#readme",
+  "dependencies": {
+    "@types/classnames": "^2.2.7",
+    "classnames": "^2.2.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@storybook/addon-actions": "^5.0.9",
+    "@storybook/addon-info": "^5.0.9",
+    "@storybook/addon-links": "^5.0.9",
+    "@storybook/addon-options": "^5.0.9",
+    "@storybook/addons": "^5.0.9",
+    "@storybook/react": "^5.0.9",
+    "@types/storybook__addon-actions": "^3.4.2",
+    "@types/storybook__addon-links": "^3.3.4",
+    "@types/storybook__react": "^4.0.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "react": "^16.8.6",
+    "react-docgen-typescript-loader": "^3.1.0",
+    "react-dom": "^16.8.6",
+    "style-loader": "^0.23.1",
+    "typescript": "^3.4.3"
+  }
+}

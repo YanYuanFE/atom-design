@@ -1,0 +1,136 @@
+@import '../../styles/theme.less';
+@import '../../styles/mixins.less';
+
+@btn-prefix-cls: ~'@{atom-prefix}-btn';
+
+@btn-ghost-color: @text-color;
+@btn-ghost-bg: transparent;
+@btn-ghost-border: @border-color-base;
+
+.button-size(@height; @padding; @font-size; @border-radius) {
+    height: @height;
+    padding: @padding;
+    font-size: @font-size;
+    border-radius: @border-radius;
+}
+
+.button-color(@color; @background; @border) {
+    color: @color;
+    background-color: @background;
+    border-color: @border;
+}
+
+.button-disabled() {
+    &-disabled,
+    &.disabled,
+    &[disabled] {
+      &,
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        .button-color(@btn-disable-color; @btn-disable-bg; @btn-disable-border);
+        text-shadow: none;
+        box-shadow: none;
+      }
+    }
+}
+
+// round button
+.btn-round(@btnClassName: btn) {
+    .button-size(@btn-circle-size; 0 @btn-circle-size / 2; @font-size-base + 2px; @btn-circle-size);
+    &.@{btnClassName}-lg {
+      .button-size(
+        @btn-circle-size-lg; 0 @btn-circle-size-lg / 2; @btn-font-size-lg + 2px; @btn-circle-size-lg
+      );
+    }
+    &.@{btnClassName}-sm {
+      .button-size(
+        @btn-circle-size-sm; 0 @btn-circle-size-sm / 2; @font-size-base; @btn-circle-size-sm
+      );
+    }
+}
+  // circle button: the content only contains icon
+.btn-circle(@btnClassName: btn) {
+    .square(@btn-circle-size);
+    .button-size(@btn-circle-size; 0; @font-size-base + 2px; 50%);
+    &.@{btnClassName}-lg {
+      .square(@btn-circle-size-lg);
+      .button-size(@btn-circle-size-lg; 0; @btn-font-size-lg + 2px; 50%);
+    }
+    &.@{btnClassName}-sm {
+      .square(@btn-circle-size-sm);
+      .button-size(@btn-circle-size-sm; 0; @font-size-base; 50%);
+    }
+}
+
+.@{btn-prefix-cls} {
+    border: 1px solid @border-color-base;
+    border-radius: @border-radius-base;
+    background-color: @white;
+    cursor: pointer;
+    font-size: @font-size-base;
+    padding: @btn-padding-base;
+    height: @btn-height-base;
+    outline: none;
+    color: @text-color;
+
+    .button-disabled();
+
+    &.disabled,
+    &[disabled] {
+        cursor: not-allowed;
+        > * {
+            pointer-events: none;
+        }
+    }
+
+    &-primary {
+        .button-color(@btn-primary-color, @btn-primary-bg, @btn-primary-bg);
+    }
+
+    &-danger {
+        .button-color(@btn-danger-color, @btn-danger-bg, @btn-danger-border);
+    }
+
+    &-success {
+        .button-color(@btn-success-color, @btn-success-bg, @btn-success-bg);
+    }
+
+    &-dashed {
+        border-style: dashed;
+    }
+
+    &-large {
+        .button-size(@btn-height-lg, @btn-padding-lg, @btn-font-size-lg, @btn-border-radius-base)
+    }
+
+    &-small {
+        .button-size(@btn-height-sm, @btn-padding-sm, @btn-font-size-sm, @btn-border-radius-sm)
+    }
+
+    &-ghost {
+        .button-color(@btn-ghost-color, @btn-ghost-bg, @btn-ghost-border)
+    }
+
+    &-ghost&-primary {
+        .button-color(@btn-primary-bg, transparent, @btn-primary-bg);
+    }
+    
+    &-ghost&-danger {
+        .button-color(@btn-danger-bg, transparent, @btn-danger-bg);
+    }
+
+    &-ghost&-success {
+        .button-color(@btn-success-bg, transparent, @btn-success-bg);
+    }
+
+    &-round {
+        .btn-round(@btn-prefix-cls);
+    }
+    
+    &-circle,
+    &-circle-outline {
+        .btn-circle(@btn-prefix-cls);
+    }
+}
