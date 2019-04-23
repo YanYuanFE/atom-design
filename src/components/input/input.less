@@ -1,0 +1,64 @@
+@import "../../styles/theme.less";
+@import "../../styles/mixins.less";
+
+@input-prefix-cls: ~"@{atom-prefix}-input";
+
+// input status
+// == when focus or actived
+.active(@color: @outline-color) {
+  border-color: color;
+  border-right-width: @border-width-base !important;
+  outline: 0;
+  box-shadow: @input-outline-offset @outline-blur-size @outline-width
+    fade(@color, 20%);
+}
+
+// == when hoverd
+.hover(@color: @input-hover-border-color) {
+  border-color: color;
+  border-right-width: @border-width-base !important;
+}
+
+.disabled() {
+  color: @disabled-color;
+  background-color: @input-disabled-bg;
+  cursor: not-allowed;
+  opacity: 1;
+  &:hover {
+    .hover(@input-border-color);
+  }
+}
+
+.@{input-prefix-cls} {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: @input-height-base;
+  padding: @input-padding-vertical-base @input-padding-horizontal-base;
+  color: @input-color;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  background-color: @input-bg;
+  background-image: none;
+  border: @border-width-base @border-style-base @input-border-color;
+  border-radius: @border-radius-base;
+  transition: all 0.3s;
+
+  .placeholder(); // Reset placeholder
+
+  &:hover {
+    .hover();
+  }
+
+  &:focus {
+    .active();
+  }
+
+  &-disabled {
+    .disabled();
+  }
+
+  &[disabled] {
+    .disabled();
+  }
+}
